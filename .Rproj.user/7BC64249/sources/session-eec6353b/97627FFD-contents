@@ -1,0 +1,55 @@
+\name{asmBUSCOcheck}
+\alias{asmBUSCOcheck}
+\title{
+asmBUSCOcheck
+}
+\description{
+%%  Determine if there are BUSCO genes missing in the main assembly that are
+%%  are found in the alternate assembly. BUSCO should be run on two sister
+%%  assemblies—that is they should be output from a single set of reads from the
+%%  same genome assembler as main and alternate assemblies OR output from a
+%%  haplotig/duplicate contig purging program such as purge_haplotigs or
+%%  purge_dups. Function requires two BUSCO (or compleasm) full_table.tsv files.
+}
+\usage{
+asmBUSCOcheck(asm1.busco = NULL, asm2.busco = NULL, summary = FALSE, out = NULL)
+}
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+  \item{asm1.busco}{BUSCO or compleasm full_table.tsv output for the main/primary assembly (required)}
+  \item{asm2.busco}{BUSCO or compleasm full_table.tsv output for the alternate assembly (required)}
+  \item{summary}{Summarise the number of BUSCOs found on each alternate assembly\n contigs that should be kept (optional)}
+  \item{out}{File prefix for output file. Will be in the form [prefix].txt (optional)}
+}
+\details{
+Given two BUSCO full table outputs, this function will identify whether or
+not there are BUSCOs missing in the primary/main assembly that are found in
+the alternate assembly. The full_table.tsv can be from either BUSCO or compleasm.
+The function will list the contig names of the alternate assembly that contains
+"missing" BUSCOs from the primary assembly. This list of contigs names can
+by used to subset the alternate assembly using a program like seqtk subseq
+to isolate the contigs in question, which can then be added back to the main
+assembly. Future development should include identifying BUSCOs
+}
+\value{
+    \item{keep}{list of contigs from asm2 that contain BUSCOs that are "missing" in asm1}
+    \item{summary}{summary of BUSCOs that are located on the contigs in 'keep'}
+}
+\references{
+https://busco.ezlab.org/
+https://github.com/huangnengCSU/compleasm
+https://github.com/lh3/seqtk
+}
+\author{
+Gen Morinaga
+}
+\note{
+This function outputs a list of names. It takes as arguments tab-delimited
+data tables. It makes no attempt to fasta files.
+}
+
+
+\examples{
+## busco1<-read.busco(file = "hifiasm_pd_full_table.tsv", format = "full", program = "compelasm")
+## busco2<-read.busco(file = "hifiasm_pd_hap_full_table.tsv", format = "full", program = "compelasm")
+## asmBUSCOcheck(asm1.busco = busco1, asm2.busco = busco2, summary = FALSE, out = "test")

@@ -1,0 +1,36 @@
+Statics of contigs:
+Number of contigs	3487
+Number of contigs > 10000 bp	3328
+Number of contigs >1000000 bp	699
+Total length	2387947053
+Total length of contigs > 10000 bp	2386691652
+Total length of contigs >1000000bp	2020968384
+Longest contig	24845927
+Second longest contig length	15337498
+N50	2992577
+N50 of contigs >1Mbp	2992577
+
+
+Read to Contig alignment:
+Mapping rate /%	90.75
+Split-read rate /%	3.06
+Depth	17.3114
+Mapping rate in large contigs /%	72.71
+Split-read rate in large contigs /%	0.48
+Depth in large conigs	16.6675
+
+
+Structural error	10
+Expansion	6
+Collapse	4
+Haplotype switch	0
+Inversion	0
+
+
+Small-scale assembly error /per Mbp	3.91127190317
+Total small-scale assembly error	9335
+Base substitution	2485
+Small-scale expansion	6127
+Small-scale collapse	723
+
+QV	52.446723052

@@ -1,0 +1,92 @@
+#library(data.table)
+library(tidyverse)
+library(topGO)
+library(ape)
+library(cowplot)
+
+interpro<-read.table('AaegL5.tsv', sep = '\t', header = FALSE, quote = "")
+inv.gene<-readLines('genes_inversions.txt')
+gff<-read.gff('AaegL5_complete.genomic.gff')
+all.gene<-readLines('all_genes.txt')
+
+interpro<-interpro['V14' != '-']
+interpro$V1<-gsub('AaegL5_', '', interpro$V1)
+interpro$V14<-gsub('\\([A-z]+\\)', '', interpro$V14)
+interpro$go.list<-strsplit(interpro$V14, '\\|')
+gene.to.go<-as.list(
+  tapply(
+    unlist(interpro$go.list),
+    rep(interpro$V1, lengths(interpro$go.list)),
+    unique
+    )
+)
+
+gene.list<-factor(as.integer(all.gene %in% inv.gene))
+names(gene.list)<-all.gene
+
+genes.with.go<-intersect(names(gene.list), names(gene.to.go))
+
+gene.list2<-gene.list[genes.with.go]
+gene.to.go2<-gene.to.go[genes.with.go]
+
+topgo.data<-new("topGOdata", ontology = "BP", allGenes = gene.list2,
+    annot = annFUN.gene2GO, gene2GO = gene.to.go2)
+
+
+topgo.out<-runTest(topgo.data, algorithm = "weight01", statistic = "fisher")
+topgo.res<-GenTable(topgo.data, Fisher = topgo.out, topNodes = 25)
+topgo.res$fdr<-p.adjust(topgo.res$Fisher, method = 'fdr')
+
+p1<-topgo.res %>%
+  filter(fdr < 0.05) %>%
+  arrange(fdr) %>%
+  mutate(Term = case_when(GO.ID == "GO:0061172" ~ "regulation of establishment of bipolar cell polarity",
+                          GO.ID == "GO:0007187" ~ "G protein-coupled receptor signaling pathway, coupled to cyclic nucleotide second messenger",
+                          GO.ID == "GO:0000973" ~ "post-transcriptional tethering of RNA polymerase II gene DNA at nuclear periphery",
+                          GO.ID == "GO:0008285"~ "negative regulation of cell population proliferation",
+                          GO.ID == "GO:0032436" ~ "positive regulation of proteasomal ubiquitin-dependent protein catabolic process",
+                          .default = Term),
+    Term = factor(Term, levels = unique(Term[order(fdr)]))) %>%
+  ggplot(aes(x = Term, y = fdr)) +
+  geom_segment(aes(x = Term, y = 0, yend = fdr)) +
+  geom_point(size = 4) +
+  scale_y_continuous(expand = expansion(mult = c(0.01, 0.01))) +
+  scale_x_discrete(labels = label_wrap_gen(width = 35)) +
+  labs(x = NULL, y = "P value (FDR adjusted)") +
+  coord_flip() +
+  theme_bw() +
+  theme(aspect.ratio = 1
+        )
+ggsave2(plot = p1, file = "significant_GO_terms.pdf", height = 8, width = 8)
+ggsave2(plot = p1, file = "significant_GO_terms.png", height = 8, width = 8)
+
+# 
+# sig.terms<-topgo.res[which(topgo.res$fdr < 0.05), 1]
+# sig.genes<-stack(genesInTerm(topgo.data, whichGO = sig.terms))
+# names(sig.genes)<-c('gene', 'go')
+# sig.genes.dat<-sig.genes %>%
+#   # filter(go == 'GO:0007608') %>% 
+#   filter(gene %in% inv.gene) %>%
+#   left_join(interpro %>% dplyr::select(V1, V6) %>% dplyr::rename("gene" = "V1", "desc" = "V6"))
+# 
+# gff.att<-data.frame(attr = gff$attributes) %>%
+#   mutate(gene = gsub(".*ID=([^;]+).*", "\\1", attr),
+#          product = gsub(".*product=([^;]+).*", "\\1", attr)) %>%
+#   dplyr::select(-attr)
+# 
+# 
+# sig.genes.dat %>%
+#   left_join(gff.att)
+# 
+# 
+# 
+# x %>%
+#   dplyr::select(V9) %>% head %>%
+#   mutate(id = gsub(".*ID=([^;]+).*", "\\1", V9),
+#          product = gsub(".*product=([^;]+).*", "\\1", V9)) %>%
+#   dplyr::select(-V9)
+# 
+# 
+
+
+
