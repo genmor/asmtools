@@ -188,7 +188,7 @@ Once each of these tables have been created, you should merge them together into
 ## Using `asmidx`
 Invoking `asmidx()` will launch a GUI which will look like the following:
 
-![[Fig1.png]]
+![Fig1.png](images/Fig1.png)
 The intent behind `asmidx()` is to emphasize ease of use, hence the point-and-click interface. Along the top, are navigation tabs that you can click to see different/do different things to your data. 
 
 #### Uploading your assembly metrics
@@ -205,7 +205,7 @@ Once the data are uploaded, proceed to the "Choose columns" tab. Here, you choos
 | Assembly size                    | 1 (optional)        | The column that contains total size of the assembly                                                                                     |
 | Known size                       | not a column        | A genome size you want to compare to (in bp); will use<br>this value to calculate a relative size difference, where<br>lower is better. |
 
-![[Fig2.png]]
+![Fig2.png](images/Fig4.png)
 
 Once you've chosen your columns, you can hit the 'Choose these columns' button (circled in red in [[Fig2.png|Fig. 2]]) and it will output a table of the columns you've chosen to use as part of your assembly metric. Once you're happy with your choices move on to the "Results: Rankings by Normalized Metrics" tab.
 
@@ -214,14 +214,14 @@ To rank the draft assemblies using the user-defined set of metrics, we feature n
 
 This tab will display a lollipop plot of the scores and a table of the normalized scores. The user can save both the normalized data and the plot by clicking their respective buttons on the left.
 
-![[Fig3.png]]
+![Fig3.png](images/Fig3.png)
 
 #### Weighted rankings
 Are all metrics equally important? This may not be the case in all situations and datasets. If some metrics are more important, they should be weighted. You can do this with `asmidx()`  on the last tab, "Rankings by user-specified weights". Here, you can enter any numerical value for each metric in your scoring scheme. The weights don't need to sum to anything specific. The important thing to keep in mind is that these are **relative importance**—if you think BUSCO single copy ortholog counts are 50x more important than the N50, then you can type 50 in BUSCO S and 1 in N50.
 
 Just as with the normalized weights, you can download and save the plot and table using the buttons at the bottom.
 
-![[Fig4.png]]
+![Fig4.png](images/Fig4.png)
 
 ### Which metrics and what weights should I use?
 This can get tricky—it really depends on what you think is are good indicators of genome quality. I think obvious metrics to include are things like **N50, L50, BUSCOs, and relative size**. Relative size gives you a sense of how different your draft is from the estimated or known genome size. N50 and L50 give you a sense of contiguity. BUSCOs give you a sense of the gene content completeness. It's worth noting though that some metrics are somewhat redundant: BUSCO missing and BUSCO complete tell you very similar things—the presence or absence of a single copy ortholog that *SHOULD* be there.
