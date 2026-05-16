@@ -3,6 +3,7 @@ This is an R package combines the functions of `asmidx` and `CSBfilter` into a s
 
 ## Citation
 If you use this package please cite the original article where we first described asmidx and CSBfilter.
+
 Morinaga, Gen, Darío Balcazar, Athanase Badolo, et al. “From Macro to Micro: De Novo Genomes of Aedes Mosquitoes Enable Comparative Genomics Among Close and Distant Relatives.” Genome Biology and Evolution 17, no. 8 (2025): evaf142. https://doi.org/10.1093/gbe/evaf142.
 
 ## Installation
