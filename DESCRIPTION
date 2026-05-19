@@ -9,8 +9,7 @@ Authors@R: c(
       role = c("aut", "cre")
     )
   )
-Description: A set of tools used to evaluate genome quality based on outputs from external tools such as BBMap, samtools, BUSCO/compleasm, inspector, and Juicer. To cite this package, please cite the original publiation:
-Morinaga, Gen, Darío Balcazar, Athanase Badolo, et al. “From Macro to Micro: De Novo Genomes of Aedes Mosquitoes Enable Comparative Genomics Among Close and Distant Relatives.” Genome Biology and Evolution 17, no. 8 (2025): evaf142. https://doi.org/10.1093/gbe/evaf142
+Description: A set of tools used to evaluate genome quality based on outputs from external tools such as BBMap, samtools, BUSCO/compleasm, inspector, and Juicer. To cite this package, please cite the original publiation
 License: GPL (>=3)
 Encoding: UTF-8
 LazyData: true
