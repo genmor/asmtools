@@ -1,0 +1,21 @@
+# --------------------------------------------
+# CITATION file created with {cffr} R package
+# See also: https://docs.ropensci.org/cffr/
+# --------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "asmtools" in publications use:'
+type: software
+title: 'asmtools: A set of scripts for evalutating genome assemblies'
+version: 0.1.0
+abstract: A set of tools used to evaluate genome quality based on outputs from external
+  tools such as BBMap, samtools, BUSCO/compleasm, inspector, and Juicer
+authors:
+- family-names: Morinaga
+  given-names: Gen
+  email: gen.morinaga@ucalgary.ca
+contact:
+- family-names: Morinaga
+  given-names: Gen
+  email: gen.morinaga@ucalgary.ca
+
