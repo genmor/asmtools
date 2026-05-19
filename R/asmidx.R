@@ -20,6 +20,7 @@
 #'
 #' Rankings are visualized using a lollipop plot, where the top two assemblies are highlighted.
 #' The normalized data and the generated plot can be exported.
+#' @example asmidx()
 #' @export
 asmidx<-function() {
   ui<-fluidPage(
