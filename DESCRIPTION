@@ -1,6 +1,7 @@
 Package: asmtools
 Type: Package
 Title: A set of scripts for evalutating genome assemblies
+Imports: stats, utils, tools, fs, ggplot2, ggrepel, shiny, shinyWidgets, dplyr, tidyselect, cowplot, reshape2
 Version: 0.1.0
 Authors@R: c(
     person(
