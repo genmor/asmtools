@@ -20,7 +20,13 @@
 #'
 #' Rankings are visualized using a lollipop plot, where the top two assemblies are highlighted.
 #' The normalized data and the generated plot can be exported.
-#' @example asmidx()
+#' @importFrom shiny fluidPage navbarPage tabPanel sidebarLayout sidebarPanel mainPanel fileInput checkboxInput radioButtons uiOutput numericInput actionButton plotOutput downloadButton renderPlot renderUI renderText eventReactive reactive req
+#' @importFrom shinyWidgets pickerInput
+#' @importFrom DT dataTableOutput renderDataTable datatable formatRound
+#' @importFrom dplyr select rename mutate across all_of filter slice_max inner_join
+#' @importFrom purrr reduce
+#' @importFrom ggplot2 ggplot aes geom_segment geom_point geom_text scale_y_continuous ggtitle labs coord_flip theme ggplot element_text
+#' @importFrom cowplot theme_minimal_vgrid panel_border
 #' @export
 asmidx<-function() {
   ui<-fluidPage(
@@ -119,7 +125,7 @@ asmidx<-function() {
                 label = 'Select column that contains assembly size for calculating relative assembly size difference',
                 choices = colnames(data()),
                 options = list(`action-box` = T,
-                               maxOption = 1),
+                               maxOptions = 1),
                 selected = NULL,
                 multiple = T)
     })
