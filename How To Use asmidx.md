@@ -1,7 +1,7 @@
 Created Nov. 2025 by Gen Morinaga
 
 ## Introduction
-`asmidx` is an R package that I wrote to try to rank different draft genome assemblies using user-defined genome metrics because I had a hard time deciding which draft assembly to use for downstream processes.  
+`asmidx` is an R package/functions that I wrote to try to rank different draft genome assemblies using user-defined genome metrics because I had a hard time deciding which draft assembly to use for downstream processes.  
 
 ## The problem
 Given a set of whole genome sequencing reads (Illumina, HiFi, ONT, etc.), we have the option to choose from a constellation of programs that will take the reads, stitch them together using some algorithm, and output a de novo draft genome assembly. The vast majority of these programs perform VERY well and are rigorously tested, both on "toy" and real-world datasets. However, they don't all output the same thing for a given set of reads, and they each perform differently on different sets of reads. Furthermore, it may not be enough to simply pass the reads to an assembler—we often have to use other programs to further improve the assembly (e.g., remove haplotigs, polish using higher accuracy reads, scaffolding).  These additional bioinformatic "touches" further alter the draft assembly and their outputs are not necessarily the same and can vary in their quality.
