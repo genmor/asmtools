@@ -20,7 +20,7 @@
 #'
 #' Rankings are visualized using a lollipop plot, where the top two assemblies are highlighted.
 #' The normalized data and the generated plot can be exported.
-#' @importFrom shiny fluidPage navbarPage tabPanel sidebarLayout sidebarPanel mainPanel fileInput checkboxInput radioButtons uiOutput numericInput actionButton plotOutput downloadButton renderPlot renderUI renderText eventReactive reactive req
+#' @importFrom shiny div fluidPage navbarPage tabPanel sidebarLayout sidebarPanel mainPanel fileInput checkboxInput radioButtons uiOutput numericInput actionButton plotOutput downloadButton renderPlot renderUI renderText eventReactive reactive req
 #' @importFrom shinyWidgets pickerInput
 #' @importFrom DT dataTableOutput renderDataTable datatable formatRound
 #' @importFrom dplyr select rename mutate across all_of filter slice_max inner_join
