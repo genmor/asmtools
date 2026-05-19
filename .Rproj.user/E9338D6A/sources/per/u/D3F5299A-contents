@@ -1,4 +1,0 @@
-inv_cat<-read.table("../4_inv/inv_cat_filt.bed", fill = TRUE, sep = "\t", header = FALSE)
-scogs<-read.table("../5_aegypti_of/Results_Dec17/Orthogroups/Orthogroups_SingleCopyOrthologues.txt")
-ogs<-read.table("../5_aegypti_of/Results_Dec17/Orthogroups/Orthogroups.tsv", fill = TRUE, sep = "\t", header = TRUE)
-bed.list<-lapply(list.files(pattern = "complete.genomic.bed"), read.table)

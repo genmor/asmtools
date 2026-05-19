@@ -1,11 +1,12 @@
 bibentry(
   bibtype = "Article",
-  title = {From Macro to Micro: De Novo Genomes of Aedes Mosquitoes Enable Comparative Genomics Among Close and Distant Relatives},
-  author = {Morinaga, Gen and Balcazar, Darío and Badolo, Athanase and Iyaloo, Diana and Tantely, Michaël Luciano and Mouillaud, Theo and Sharakhova, Maria and Geib, Scott M and Paupy, Christophe and Ayala, Diego and Powell, Jeffrey R and Gloria-Soria, Andrea and Soghigian, John},
-  journal = {Genome Biology and Evolution},
-  year = {2025},
-  volume = {17},
-  number = {8},
-  pages = {evaf142},
-  doi = {10.1093/gbe/evaf142}
+  title = "From Macro to Micro: De Novo Genomes of Aedes Mosquitoes Enable Comparative Genomics Among Close and Distant Relatives",
+  author = c(person("Gen", "Morinaga"), person("Darío", "Balcazar"), person("Athanase", "Badolo"),
+  person("Diana", "Iyaloo"), person("Michaël Luciano", "Tantely"), person("Theo", "Mouillaud"), person("Maria", "Sharakhova"), person("Scott", "Geib"), person("Christophe", "Paupy"), person("Diego", "Ayala"), person("Jeffrey R", "Powell"), person("Andrea", "Gloria-Soria"), person("John", "Soghigian"))
+  journal = "Genome Biology and Evolution",
+  year = "2025",
+  volume = "17",
+  number = "8",
+  pages = "evaf142",
+  doi = "10.1093/gbe/evaf142"
 )
