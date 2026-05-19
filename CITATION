@@ -1,0 +1,16 @@
+@article{morinagaMacroMicroNovo2025,
+  title = {From {{Macro}} to {{Micro}}: {{De Novo Genomes}} of {{{\emph{Aedes}}}} {{Mosquitoes Enable Comparative Genomics Among Close}} and {{Distant Relatives}}},
+  shorttitle = {From {{Macro}} to {{Micro}}},
+  author = {Morinaga, Gen and Balcazar, Dar{\'i}o and Badolo, Athanase and Iyaloo, Diana and Tantely, Micha{\"e}l Luciano and Mouillaud, Theo and Sharakhova, Maria and Geib, Scott M and Paupy, Christophe and Ayala, Diego and Powell, Jeffrey R and {Gloria-Soria}, Andrea and Soghigian, John},
+  year = 2025,
+  month = aug,
+  journal = {Genome Biology and Evolution},
+  volume = {17},
+  number = {8},
+  pages = {evaf142},
+  issn = {1759-6653},
+  doi = {10.1093/gbe/evaf142},
+  urldate = {2025-08-18},
+  abstract = {The yellow fever mosquito (Aedes aegypti) is an organism of high medical importance because it is the primary vector for diseases such as yellow fever, Zika, dengue, and chikungunya. Its medical importance has made it a subject of numerous efforts to understand its biology. One such effort was the development of a high-quality reference genome (AaegL5). However, this reference genome was sourced from a highly inbred laboratory strain with unknown geographic origin. Thus, the reference is not representative of a wild mosquito, let alone one from its native range in sub-Saharan Africa. To better understand the genetic architecture of Ae. aegypti and their sister species, we developed two de novo chromosome-scale genomes with sequences sourced from single individuals: one of Ae. aegypti formosus (Aaf) from Burkina Faso and one of Aedes mascarensis (Am) from Mauritius. Both genomes exhibit high contiguity and gene completeness, comparable to AaegL5. While Aaf exhibits a high degree of synteny to AaegL5, it also exhibits several large inversions. We also conducted comparative genomic analyses using our genomes and other publicly available culicid reference genomes to find extensive chromosomal rearrangements between major lineages. The expanded gene families common to Aaf, AaegL5, and Am revealed that while the overarching category of genes that have expanded are similar, the specific genes that have expanded differ. Our findings elucidate novel insights into chromosome evolution at both microevolutionary and macroevolutionary scales. The genomic resources we present are additions to a growing arsenal for biologists in understanding mosquito biology and genome evolution.},
+  file = {C\:\\Users\\gen.morinaga\\Zotero\\storage\\5A8N27TG\\Morinaga et al. - 2025 - From Macro to Micro De Novo Genomes of Aedes Mosquitoes Enable Comparative Genomics Among Close.pdf;C\:\\Users\\gen.morinaga\\Zotero\\storage\\82WWNSYD\\evaf142.html}
+}
