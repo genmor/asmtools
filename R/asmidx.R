@@ -26,7 +26,7 @@
 #' @importFrom dplyr select rename mutate across all_of filter slice_max inner_join relocate
 #' @importFrom purrr reduce
 #' @importFrom magrittr %>%
-#' @importFrom ggplot2 ggplot aes geom_segment labs geom_point geom_text scale_y_continuous ggtitle coord_flip theme ggplot element_text xlab
+#' @importFrom ggplot2 ggsave ggplot aes geom_segment labs geom_point geom_text scale_y_continuous ggtitle coord_flip theme ggplot element_text xlab
 #' @importFrom cowplot theme_minimal_vgrid panel_border
 #' @export
 asmidx<-function() {
@@ -311,6 +311,7 @@ asmidx<-function() {
     filename = function() {
       paste(Sys.Date(), '_normalized_metric_ranks', '.csv', sep = '')
       },
+    contentType = "text/csv",
     content = function(file) {
       write.csv(data_norm(), file)
       })
@@ -338,6 +339,7 @@ asmidx<-function() {
     filename = function() {
       paste(Sys.Date(), '_normalized_metric_ranks', '.pdf', sep = '')
       },
+    contentType = "application/pdf",
     content = function(file) {
       ggsave(file, plot = dl_plot_norm(), device = 'pdf',
              width  = 7,
@@ -350,14 +352,14 @@ asmidx<-function() {
     filename = function() {
       paste(Sys.Date(), '_weighted_metric_ranks', '.csv', sep = '')
       },
+    contentType = "text/csv",
     content = function(file) {
       x<-sapply(paste0('w_', names(data_norm())[c(-1, -2)]), function(x) {
         input[[x]]
         }, simplify = F, USE.NAMES = T)
       y<-paste(names(x), x, sep = '_')
       y<-c('assembly', 'wScore', y)
-      z<-data_w() %>%
-        rename_with(~ y)
+      z<-data_w() %>% setNames(y)
       write.csv(z, file)
       })
 
@@ -384,6 +386,7 @@ asmidx<-function() {
     filename = function() {
       paste(Sys.Date(), '_weighted_normalized_metric_ranks', '.pdf', sep = '')
       },
+    contentType = "application/pdf",
     content = function(file) {
       ggsave(file, plot = dl_plot_w(), device = 'pdf',
              width  = 7,
