@@ -20,12 +20,13 @@
 #'
 #' Rankings are visualized using a lollipop plot, where the top two assemblies are highlighted.
 #' The normalized data and the generated plot can be exported.
-#' @importFrom shiny fluidPage navbarPage tabPanel sidebarLayout sidebarPanel mainPanel fileInput checkboxInput radioButtons uiOutput numericInput actionButton plotOutput downloadButton renderPlot renderUI renderText eventReactive reactive req
+#' @importFrom shiny shinyApp fluidPage navbarPage tabPanel sidebarLayout sidebarPanel mainPanel fileInput checkboxInput radioButtons uiOutput numericInput actionButton plotOutput downloadButton renderPlot renderUI renderText textOutput eventReactive reactive req div h5 strong
 #' @importFrom shinyWidgets pickerInput
 #' @importFrom DT dataTableOutput renderDataTable datatable formatRound
-#' @importFrom dplyr select rename mutate across all_of filter slice_max inner_join
+#' @importFrom dplyr select rename mutate across all_of filter slice_max inner_join relocate
 #' @importFrom purrr reduce
-#' @importFrom ggplot2 ggplot aes geom_segment geom_point geom_text scale_y_continuous ggtitle labs coord_flip theme ggplot element_text
+#' @importFrom magrittr %>%
+#' @importFrom ggplot2 ggplot aes geom_segment labs geom_point geom_text scale_y_continuous ggtitle coord_flip theme ggplot element_text xlab
 #' @importFrom cowplot theme_minimal_vgrid panel_border
 #' @export
 asmidx<-function() {
@@ -65,7 +66,7 @@ asmidx<-function() {
                         sidebarLayout(
                           sidebarPanel(
                             width = 3,
-                            shiny::div(style="display: inline-block; vertical-align:center", class = "row-fluid",
+                            div(style="display: inline-block; vertical-align:center", class = "row-fluid",
                                 downloadButton(outputId = 'dl_norm_dat', 'Download Normalized Data'),
                                 downloadButton(outputId = 'dl_norm_plot', 'Download Normalized Rankings Plot')
                                 )
@@ -80,8 +81,8 @@ asmidx<-function() {
                         sidebarLayout(
                           sidebarPanel(
                             width = 3,
-                            shiny::div(style = "display: inline-block; vertical-align:center; horizontal-align:center", class = "row-fluid",
-                                shiny::h5(shiny::strong('Weights can be any positive value')),
+                            div(style = "display: inline-block; vertical-align:center; horizontal-align:center", class = "row-fluid",
+                                h5(strong('Weights can be any positive value')),
                                 uiOutput('weight_ui'),
                                 textOutput('w_sum'),
                                 actionButton('w_select', 'Set Weights'),
