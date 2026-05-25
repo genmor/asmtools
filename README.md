@@ -1,7 +1,9 @@
 ## Citation
-If you use this package please cite the original article where we first described asmidx and CSBfilter.
+Please cite the original publication where we described the core functions of `asmidx` and `CSBfilter`.
 
 Morinaga, Gen, Darío Balcazar, Athanase Badolo, et al. “From Macro to Micro: De Novo Genomes of Aedes Mosquitoes Enable Comparative Genomics Among Close and Distant Relatives.” Genome Biology and Evolution 17, no. 8 (2025): evaf142. https://doi.org/10.1093/gbe/evaf142.
+
+I decided that it would be easier to maintain a single repository rather than multiple. It also makes sense from the perspective of having a single toolkit with numerous functions rather than a many minor tools. 
 
 ## Installation
 You'll need a way to install R packages from github. One way to do this is:
@@ -18,7 +20,4 @@ This R package bundles a handful of functions written to load and compare output
 1. load various outputs into the R environment (e.g., `read.busco`, `read.jbat.review`)
 2. compare user-defined genome assembly metrics for any number of genomes (`asmidx`)
 3. generate filter lists of contigs or scaffolds based on sequence length and BUSCO gene presence (`busco.contig.filter`, `busco.scaffold.filter`)
-4. determine if there are any BUSCOs missing from the primary assembly can be found in the secondary/haplitg assembly
-
-## Description
-This is an R package that combines the functions of `asmidx` and `CSBfilter` into a single package, which will make it easier to maintain.
+4. determine if there are any BUSCOs missing from the primary assembly can be found in the secondary/haplotig assembly ('asmBUSCOcheck')
