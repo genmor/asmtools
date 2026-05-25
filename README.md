@@ -1,6 +1,3 @@
-## Description
-This is an R package combines the functions of `asmidx` and `CSBfilter` into a single package, which will make it easier to maintain.
-
 ## Citation
 If you use this package please cite the original article where we first described asmidx and CSBfilter.
 
@@ -23,4 +20,5 @@ This R package bundles a handful of functions written to load and compare output
 3. generate filter lists of contigs or scaffolds based on sequence length and BUSCO gene presence (`busco.contig.filter`, `busco.scaffold.filter`)
 4. determine if there are any BUSCOs missing from the primary assembly can be found in the secondary/haplitg assembly
 
-##
+## Description
+This is an R package that combines the functions of `asmidx` and `CSBfilter` into a single package, which will make it easier to maintain.
