@@ -3,7 +3,7 @@ Please cite the original publication where we described the core functions of `a
 
 Morinaga, Gen, Darío Balcazar, Athanase Badolo, et al. “From Macro to Micro: De Novo Genomes of Aedes Mosquitoes Enable Comparative Genomics Among Close and Distant Relatives.” Genome Biology and Evolution 17, no. 8 (2025): evaf142. https://doi.org/10.1093/gbe/evaf142.
 
-I decided that it would be easier to maintain a single repository rather than multiple. It also makes sense from the perspective of having a single toolkit with numerous functions rather than a many minor tools. 
+I decided that it would be easier to maintain a single repository rather than multiple. It also makes sense from the perspective of having a single toolkit with numerous functions rather than many minor tools. 
 
 ## Installation
 You'll need a way to install R packages from github. One way to do this is:
