@@ -66,7 +66,7 @@ busco.scaffold.filter<-function(jbat.list = jbat.list, busco.dat = busco.dat, ou
   )
   busco.summarised<-data.frame(do.call(rbind, busco.summarised))
   rownames(busco.summarised)<-NULL
-  busco.summarised[, c(2:4)]<-apply(busco.summarised[, c(2:4)], 2, as.numeric)
+  busco.summarised[, c(2:5)]<-apply(busco.summarised[, c(2:5)], 2, as.numeric)
   busco.summarised<-busco.summarised[which(busco.summarised$sequence != ""),]
 
   scaffold.summarised<-by(scaffold.dat, list(scaffold.dat$scaffold), function(x)
@@ -82,19 +82,22 @@ busco.scaffold.filter<-function(jbat.list = jbat.list, busco.dat = busco.dat, ou
   combined.summary<-merge(scaffold.summarised, busco.summarised, all.x = T)
 
   scaff.keep<-rbind(
-    combined.summary[which(combined.summary$complete > 0 | combined.summary$frag > 0),],
+    combined.summary[which(combined.summary$complete > 0 | combined.summary$frag > 0 | combined.summary$i_frag > 0),],
     combined.summary[which(combined.summary$jbat_status == "debris" & combined.summary$complete > 0),],
     combined.summary[which(combined.summary$jbat_status == "debris" & combined.summary$frag > 0),],
+    combined.summary[which(combined.summary$jbat_status == "debris" & combined.summary$i_frag > 0),],
     combined.summary[which(combined.summary$jbat_status == "scaffold" &
                              is.na(combined.summary$complete) == T &
                              is.na(combined.summary$dup) == T &
+                             is.na(combined.summary$i_frag) == T &
                              is.na(combined.summary$frag) == T),]
   )
   debris.dups<-rbind(
-    combined.summary[which(combined.summary$dup > 0 & combined.summary$complete == 0 & combined.summary$frag == 0), ],
+    combined.summary[which(combined.summary$dup > 0 & combined.summary$complete == 0 & combined.summary$frag == 0 & combined.summary$i_frag == 0), ],
     combined.summary[which(combined.summary$jbat_status == "debris" &
                              is.na(combined.summary$complete == T) &
                              is.na(combined.summary$dup == T) &
+                             is.na(combined.summary$i_frag == T) &
                              is.na(combined.summary$frag == T)
     ), ]
   )
