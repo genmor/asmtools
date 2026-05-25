@@ -21,11 +21,12 @@ read.busco<-function(file, format = c("short", "full"), program = c("BUSCO", "co
   }
   if(format == "full" & program == "BUSCO") {
     tmp.dat<-read.table(file, sep = "\t", quote = "", header = F, fill = T)
-    names(tmp.dat)<-c("busco_id", "status", "sequence", "gene_start",
-                  "gene_end", "strand", "score", "length", "orthodb_url", "description")
+    names(tmp.dat)<-c("gene", "status", "sequence", "gene.start",
+                  "gene.end", "strand", "score", "length", "orthodb.url", "description")
   }
   if(format == "full" & program == "compleasm") {
     tmp.dat<-read.table(file, sep = "\t", quote = "", header = TRUE, fill = T)
+	names(tmp.dat)<-tolower(names(tmp.dat))
   }
   if(format == "short" & program == "compleasm") {
     tmp<-readLines(file)[2:7]
