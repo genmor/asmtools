@@ -97,8 +97,8 @@ busco.scaffold.filter<-function(jbat.list = jbat.list, busco.dat = busco.dat, ou
                              is.na(combined.summary$frag == T)
     ), ]
   )
-  dup.busco<-busco.dat[which(busco.dat$status == "Duplicated"), c("busco_id", "status", "sequence")]
-  tmp<-by(dup.busco, list(dup.busco$busco_id), function(x)
+  dup.busco<-busco.dat[which(busco.dat$status == "Duplicated"), c("gene", "status", "sequence")]
+  tmp<-by(dup.busco, list(dup.busco$gene), function(x)
     c(
       seq = x$sequence
     ), simplify = F
