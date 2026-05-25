@@ -30,7 +30,7 @@ busco.contig.filter <- function(
   if (!(is.null(compleasm.out))) {
     busco.dat <- compleasm.out
   }
-  # if (!(is.null(busco.out))) {
+  if (!(is.null(busco.out))) {
     # names(busco.out) <- c(
       # 'Gene',
       # 'Status',
