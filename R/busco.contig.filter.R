@@ -30,28 +30,28 @@ busco.contig.filter <- function(
   if (!(is.null(compleasm.out))) {
     busco.dat <- compleasm.out
   }
-  if (!(is.null(busco.out))) {
-    names(busco.out) <- c(
-      'Gene',
-      'Status',
-      'Sequence',
-      'Gene.Start',
-      'Gene.End',
-      'Strand',
-      'Score',
-      'Length',
-      'OrthoDB_url',
-      'Description'
-    )
+  # if (!(is.null(busco.out))) {
+    # names(busco.out) <- c(
+      # 'Gene',
+      # 'Status',
+      # 'Sequence',
+      # 'Gene.Start',
+      # 'Gene.End',
+      # 'Strand',
+      # 'Score',
+      # 'Length',
+      # 'OrthoDB_url',
+      # 'Description'
+    # )
     busco.dat <- busco.out
-    busco.dat$Status<-gsub('Complete', 'Single', busco.dat$Status)
+    busco.dat$status<-gsub('Complete', 'Single', busco.dat$status)
   }
-  busco.dat <- busco.dat[which(busco.dat$Status != 'Missing'), ]
+  busco.dat <- busco.dat[which(busco.dat$status != 'Missing'), ]
   names(contig.info) <- c('sequence.id', 'sequence.length')
-  comp.seqs <- unique(busco.dat$Sequence)
+  comp.seqs <- unique(busco.dat$sequence)
   keep <- contig.info$sequence.id[!(contig.info$sequence.id %in% comp.seqs)] #keep all sequences that don't have BUSCOs on them
 
-  contig.status.counts <- as.data.frame.matrix(table(busco.dat[c('Sequence', 'Status')]))
+  contig.status.counts <- as.data.frame.matrix(table(busco.dat[c('sequence', 'status')]))
   contig.status.counts$sequence <- row.names(contig.status.counts)
   row.names(contig.status.counts) <- NULL
 
@@ -67,11 +67,11 @@ busco.contig.filter <- function(
                                                  contig.status.counts$Fragmented > 0) |
                                            contig.status.counts$Interspaced > 0, 'sequence']) #keep all sequences that have single copy, fragmented or interspaced BUSCOs
   }
-  dups <- busco.dat[which(busco.dat$Status == 'Duplicated'), c('Gene', 'Status', 'Sequence')]
-  names(contig.info)<-c("Sequence", "Length")
+  dups <- busco.dat[which(busco.dat$status == 'Duplicated'), c('gene', 'status', 'sequence')]
+  names(contig.info)<-c("sequence", "length")
 
-  tmp <- by(dups, list(dups$Gene), function(x)
-    c(seq = x$Sequence), simplify = F)
+  tmp <- by(dups, list(dups$gene), function(x)
+    c(seq = x$sequence), simplify = F)
   tmp <- lapply(tmp, function(x)
     data.frame(t(x)))
   tmp.names <- unique(unlist(lapply(tmp, names)))
@@ -98,7 +98,7 @@ busco.contig.filter <- function(
     y = ind,
     SIMPLIFY = T
   )))} else {
-    dup.keep<-unique(dups$Sequence)
+    dup.keep<-unique(dups$sequence)
   }
 
   keep <- c(keep, dup.keep)
