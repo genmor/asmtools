@@ -33,20 +33,20 @@ asmBUSCOcheck<-function(asm1.busco = NULL, asm2.busco = NULL, summary = FALSE, o
       stop("asm2.busco is not the full table output from BUSCO or compleasm")
     )
 
-  if(ncol(asm1.busco) == 10) {
-    names(asm1.busco)<-c("Gene", "Status", "Sequence", "Gene.Start",
-                         "Gene.End", "Strand", "Score", "Length")
-  }
+  # if(ncol(asm1.busco) == 10) {
+  #   names(asm1.busco)<-c("gene", "status", "sequence", "gene.start",
+  #                        "gene.end", "strand", "score", "length")
+  # }
 
-  sub.col<-c("Gene", "Status", "Sequence")
+  sub.col<-c("gene", "status", "sequence")
 
   asm1.sub<-asm1.busco[, sub.col]
   asm2.sub<-asm2.busco[, sub.col]
 
-  asm1.missing<-asm1.sub[which(asm1.sub[, "Status"] == "Missing"), 1]
-  asm2.not.missing<-asm2.sub[which(asm2.sub[, "Status"] != "Missing"), ]
+  asm1.missing<-asm1.sub[which(asm1.sub[, "status"] == "Missing"), 1]
+  asm2.not.missing<-asm2.sub[which(asm2.sub[, "status"] != "Missing"), ]
 
-  asm2.not.in.asm1<-asm2.not.missing[asm2.not.missing[, "Gene"] %in% asm1.missing, ]
+  asm2.not.in.asm1<-asm2.not.missing[asm2.not.missing[, "gene"] %in% asm1.missing, ]
 
   # hap<-unique(asm2.not.in.asm1[, "Sequence"])
   # busco<-unique(asm2.not.in.asm1[, "Gene"])
@@ -59,7 +59,7 @@ asmBUSCOcheck<-function(asm1.busco = NULL, asm2.busco = NULL, summary = FALSE, o
   # single<-asm2.not.in.asm1[which(asm2.not.in.asm1[, "Status"] == "Single"), "Sequence"]
   # keep<-unique(c(single, asm1.frag.asm2.single))
   ####
-  keep<-unique(asm2.not.in.asm1[, "Sequence"])
+  keep<-unique(asm2.not.in.asm1[, "sequence"])
   if(length(keep) == 0)
     warning("all missing BUSCOs in asm1 are also missing in asm2", call. = FALSE)
 
@@ -68,7 +68,7 @@ asmBUSCOcheck<-function(asm1.busco = NULL, asm2.busco = NULL, summary = FALSE, o
                 quote = FALSE, sep = "\t", col.names = FALSE, row.names = FALSE)
   }
   if(summary == TRUE & length(keep) != 0) {
-    asm2.keep.summary<-aggregate(Gene ~ Sequence + Status,
+    asm2.keep.summary<-aggregate(gene ~ sequence + status,
                                  asm2.not.in.asm1[which(asm2.not.in.asm1[, 3] %in% keep),],
                                  FUN = length)
     print(asm2.keep.summary)
