@@ -58,9 +58,10 @@ busco.scaffold.filter<-function(jbat.list = jbat.list, busco.dat = busco.dat, ou
   busco.summarised<-by(busco.dat, list(busco.dat$sequence), function(x)
     c(
       sequence = unique(x$sequence),
-      complete = sum(x$status == "Complete"),
+      complete = sum(x$status == "Complete" | x$status == "Single"),
       dup = sum(x$status == "Duplicated"),
-      frag = sum(x$status == "Fragmented")
+      frag = sum(x$status == "Fragmented"),
+	  i_frag = sum(x$status == "Interspaced")
     )
   )
   busco.summarised<-data.frame(do.call(rbind, busco.summarised))
