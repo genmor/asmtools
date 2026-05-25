@@ -19,12 +19,12 @@ read.busco<-function(file, format = c("short", "full"), program = c("BUSCO", "co
       percent = c(gsub("%", "",unlist(regmatches(tmp[9], gregexpr("\\d+(\\.\\d+){0,1}%", tmp[9]))))[2:5], 100)
     )
   }
-  if(format == "long" & program == "BUSCO") {
+  if(format == "full" & program == "BUSCO") {
     tmp.dat<-read.table(file, sep = "\t", quote = "", header = F, fill = T)
     names(tmp.dat)<-c("busco_id", "status", "sequence", "gene_start",
                   "gene_end", "strand", "score", "length", "orthodb_url", "description")
   }
-  if(format == "long" & program == "compleasm") {
+  if(format == "full" & program == "compleasm") {
     tmp.dat<-read.table(file, sep = "\t", quote = "", header = TRUE, fill = T)
   }
   if(format == "short" & program == "compleasm") {
