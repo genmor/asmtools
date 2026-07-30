@@ -11,7 +11,7 @@ You'll need a way to install R packages from github. One way to do this is:
 ```
 if (!requireNamespace("devtools", quietly = TRUE))
 library(devtools)
-devtools::install_github('genmor/asmtools')
+devtools::install_git("https://github.com/genmor/asmtools")
 ```
 ## Purpose
 Many programs have been developed that allow the user to assemble genomes from sequenced reads. Alongside these assemblers, a constellation of programs have been developed to assess the quality of these genomes in terms of contiguity, gene content completeness, and error detection.
